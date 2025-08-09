@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView, TemplateView
 
 from apps.models import Product, Category
 
@@ -9,7 +9,17 @@ class ProductListView(ListView):
     queryset = Product.objects.all()
     context_object_name = 'products'
 
-    def get_context_data(self, *, object_list=..., **kwargs):
-        context = super().get_context_data(object_list=object_list, **kwargs)
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
         context['categories'] = Category.objects.all()
         return context
+
+
+class ProductDetailView(DetailView):
+    template_name = 'apps/product-detail.html'
+    queryset = Product.objects.all()
+    context_object_name = 'product'
+
+
+class MainView(TemplateView):
+    template_name = 'apps/main.html'

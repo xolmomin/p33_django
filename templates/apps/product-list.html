@@ -165,6 +165,182 @@
             font-weight: bold;
         }
 
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(-50px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #999;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn:hover {
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.2s;
+            box-sizing: border-box;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #ff4757;
+        }
+
+        .form-input.error {
+            border-color: #ff4757;
+            background-color: #fff5f5;
+        }
+
+        .error-message {
+            color: #ff4757;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: #ff3742;
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .modal-footer {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .link-btn {
+            color: #ff4757;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .link-btn:hover {
+            text-decoration: underline;
+        }
+
+        .password-toggle {
+            position: relative;
+        }
+
+        .password-toggle-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #999;
+            font-size: 18px;
+        }
+
+        .password-toggle-btn:hover {
+            color: #333;
+        }
+
+        /* Responsive Modal */
+        @media (max-width: 768px) {
+            .modal {
+                padding: 20px;
+                margin: 20px;
+            }
+
+            .modal-title {
+                font-size: 20px;
+            }
+        }
+
         /* Responsive Header */
         @media (max-width: 768px) {
             .header-container {
@@ -189,6 +365,33 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+        }
+
+        .catalog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 5px;
+        }
+
+        .results-info {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .sort-dropdown {
+            padding: 8px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .sort-dropdown:focus {
+            outline: none;
+            border-color: #ff4757;
         }
 
         .product-grid {
@@ -407,6 +610,381 @@
         .galaxy-a06 .product-image {
             background: linear-gradient(45deg, #fa709a, #fee140);
         }
+
+        /* Pagination Styles */
+        .pagination-container {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pagination {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pagination-btn {
+            padding: 10px 12px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            color: #333;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+            min-width: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pagination-btn:hover:not(:disabled) {
+            border-color: #ff4757;
+            color: #ff4757;
+        }
+
+        .pagination-btn:disabled {
+            background: #f5f5f5;
+            color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .pagination-btn.active {
+            background: #ff4757;
+            color: white;
+            border-color: #ff4757;
+        }
+
+        .pagination-btn.dots {
+            border: none;
+            background: none;
+            cursor: default;
+        }
+
+        .pagination-btn.dots:hover {
+            border: none;
+            color: #333;
+        }
+
+        .pagination-info {
+            margin-left: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Items per page selector */
+        .items-per-page {
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .items-per-page select {
+            padding: 6px 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .items-per-page select:focus {
+            outline: none;
+            border-color: #ff4757;
+        }
+
+        /* Loading state */
+        .product-grid.loading {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        /* Product Detail Modal */
+        .product-detail-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .product-detail-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .product-detail-content {
+            background: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(-50px);
+            transition: transform 0.3s ease;
+        }
+
+        .product-detail-modal.active .product-detail-content {
+            transform: translateY(0);
+        }
+
+        .product-detail-header {
+            position: sticky;
+            top: 0;
+            background: white;
+            padding: 20px 30px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 15px 15px 0 0;
+            z-index: 10;
+        }
+
+        .product-detail-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin: 0;
+        }
+
+        .product-detail-body {
+            padding: 30px;
+        }
+
+        .product-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .product-detail-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-detail-phone {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 200px;
+            background: #333;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-detail-screen {
+            width: 100px;
+            height: 170px;
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            border-radius: 12px;
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .price-section {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid #ff4757;
+        }
+
+        .main-price {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff4757;
+            margin-bottom: 10px;
+        }
+
+        .installment-price {
+            font-size: 16px;
+            color: #666;
+            background: #ffd700;
+            padding: 8px 12px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        .product-badges {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .badge.warranty {
+            background: #ff4757;
+            color: white;
+        }
+
+        .badge.discount {
+            background: #27ae60;
+            color: white;
+        }
+
+        .badge.new {
+            background: #3498db;
+            color: white;
+        }
+
+        .specifications {
+            margin-top: 30px;
+        }
+
+        .spec-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #ff4757;
+            padding-bottom: 5px;
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 3px solid #ff4757;
+        }
+
+        .spec-label {
+            font-weight: 500;
+            color: #666;
+        }
+
+        .spec-value {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .product-actions {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+
+        .action-btn {
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .add-to-cart {
+            background: #ff4757;
+            color: white;
+            border: none;
+        }
+
+        .add-to-cart:hover {
+            background: #ff3742;
+        }
+
+        .buy-installment {
+            background: white;
+            color: #ff4757;
+            border: 2px solid #ff4757;
+        }
+
+        .buy-installment:hover {
+            background: #ff4757;
+            color: white;
+        }
+
+        .add-to-favorites {
+            background: white;
+            color: #999;
+            border: 2px solid #e0e0e0;
+        }
+
+        .add-to-favorites:hover {
+            border-color: #ff4757;
+            color: #ff4757;
+        }
+
+        .add-to-favorites.active {
+            background: #ff4757;
+            color: white;
+            border-color: #ff4757;
+        }
+
+        /* Responsive Product Detail */
+        @media (max-width: 768px) {
+            .product-detail-header {
+                padding: 15px 20px;
+            }
+
+            .product-detail-title {
+                font-size: 20px;
+            }
+
+            .product-detail-body {
+                padding: 20px;
+            }
+
+            .product-detail-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .product-actions {
+                grid-template-columns: 1fr;
+            }
+
+            .spec-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -454,176 +1032,936 @@
         </div>
     </div>
 </header>
-
+<a href="{% url 'main_view' %}"><h4>
+    main view
+</h4></a>
 <div class="container">
     <div class="product-grid">
         <!-- Samsung Galaxy A55 -->
-        <div class="product-card galaxy-a55">
-            <div class="product-header">
-                <button class="heart-icon">♡</button>
-                <div class="signal-bars">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
-            </div>
+        {% for product in products %}
+            <a href="{% url 'product_detail_view' product.slug %}">
+                <div class="product-card galaxy-a55">
+                    <div class="product-header">
+                        <button class="heart-icon">♡</button>
+                        <div class="signal-bars">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                    </div>
 
-            <div class="product-image">
-                <div class="phone-mockup">
-                    <div class="phone-screen"></div>
-                </div>
-                <div class="warranty-badge">
-                    <span>🛡️</span>
-                    <span>11 ЛЕТ ГАРКОЛАТ</span>
-                </div>
-            </div>
+                    <div class="product-image">
+                        <div class="phone-mockup">
+                            <div class="phone-screen"></div>
+                        </div>
+                        <div class="warranty-badge">
+                            <span>🛡️</span>
+                            <span>11 ЛЕТ ГАРКОЛАТ</span>
+                        </div>
+                    </div>
 
-            <div class="product-name">Samsung Galaxy A55</div>
-            <div class="price">4 553 800 сум</div>
-            <div class="installment">534 000 сум х 12 мес</div>
+                    <div class="product-name">{{ product.name }}</div>
+                    <div class="price">4 553 800 сум</div>
+                    <div class="installment">534 000 сум х 12 мес</div>
 
-            <div class="buttons">
-                <button class="cart-btn">🛒</button>
-                <button class="installment-btn">В рассрочку</button>
-            </div>
+                    <div class="buttons">
+                        <button class="cart-btn">🛒</button>
+                        <button class="installment-btn">В рассрочку</button>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+
+        {#        <!-- Xiaomi Redmi 14C -->#}
+        {#        <div class="product-card redmi-14c">#}
+        {#            <div class="product-header">#}
+        {#                <button class="heart-icon">♡</button>#}
+        {#                <div class="signal-bars">#}
+        {#                    <div class="bar"></div>#}
+        {#                    <div class="bar"></div>#}
+        {#                    <div class="bar"></div>#}
+        {#                    <div class="bar"></div>#}
+        {#                </div>#}
+        {#            </div>#}
+        {##}
+        {#            <div class="product-image">#}
+        {#                <div class="phone-mockup">#}
+        {#                    <div class="phone-screen"></div>#}
+        {#                </div>#}
+        {#                <div class="warranty-badge">#}
+        {#                    <span>🛡️</span>#}
+        {#                    <span>11 ЛЕТ ГАРКОЛАТ</span>#}
+        {#                </div>#}
+        {#            </div>#}
+        {##}
+        {#            <div class="product-name">Xiaomi Redmi 14C</div>#}
+        {#            <div class="price">1 503 000 сум</div>#}
+        {#            <div class="installment">181 000 сум х 12 мес</div>#}
+        {##}
+        {#            <div class="buttons">#}
+        {#                <button class="cart-btn">🛒</button>#}
+        {#                <button class="installment-btn">В рассрочку</button>#}
+        {#            </div>#}
+        {#        </div>#}
+        {##}
+        {#        <!-- Apple iPhone 16 Pro Max -->#}
+        {#        <div class="product-card iphone-16">#}
+        {#            <div class="product-header">#}
+        {#                <button class="heart-icon">♡</button>#}
+        {#                <div class="signal-bars">#}
+        {#                    <div class="bar"></div>#}
+        {#                    <div class="bar"></div>#}
+        {#                    <div class="bar"></div>#}
+        {#                    <div class="bar"></div>#}
+        {#                </div>#}
+        {#            </div>#}
+        {##}
+        {#            <div class="product-image">#}
+        {#                <div class="phone-mockup">#}
+        {#                    <div class="phone-screen"></div>#}
+        {#                </div>#}
+        {#                <div class="warranty-badge">#}
+        {#                    <span>🛡️</span>#}
+        {#                    <span>11 ЛЕТ ГАРКОЛАТ</span>#}
+        {#                </div>#}
+        {#            </div>#}
+        {##}
+        {#            <div class="product-name">Apple iPhone 16 Pro Max</div>#}
+        {#            <div class="price">18 849 000 сум</div>#}
+        {#            <div class="installment">2 368 000 сум х 12 мес</div>#}
+        {##}
+        {#            <div class="buttons">#}
+        {#                <button class="cart-btn">🛒</button>#}
+        {#                <button class="installment-btn">В рассрочку</button>#}
+        {#            </div>#}
+        {#        </div>#}
+        {##}
+        {#        <!-- Samsung Galaxy A16 -->#}
+        {#        <div class="product-card galaxy-a16">#}
+        {#            <div class="product-header">#}
+        {#                <button class="heart-icon">♡</button>#}
+        {#                <div class="signal-bars">#}
+        {#                    <div class="bar"></div>#}
+        {#                    <div class="bar"></div>#}
+        {#                    <div class="bar"></div>#}
+        {#                    <div class="bar"></div>#}
+        {#                </div>#}
+        {#            </div>#}
+        {##}
+        {#            <div class="product-image">#}
+        {#                <div class="phone-mockup">#}
+        {#                    <div class="phone-screen"></div>#}
+        {#                </div>#}
+        {#                <div class="warranty-badge">#}
+        {#                    <span>🛡️</span>#}
+        {#                    <span>11 ЛЕТ ГАРКОЛАТ</span>#}
+        {#                </div>#}
+        {#            </div>#}
+        {##}
+        {#            <div class="product-name">Samsung Galaxy A16</div>#}
+        {#            <div class="price">2 147 000 сум</div>#}
+        {#            <div class="installment">256 000 сум х 12 мес</div>#}
+        {##}
+        {#            <div class="buttons">#}
+        {#                <button class="cart-btn">🛒</button>#}
+        {#                <button class="installment-btn">В рассрочку</button>#}
+        {#            </div>#}
+        {#        </div>#}
+        {##}
+        {#        <!-- Samsung Galaxy A06 -->#}
+        {#        <div class="product-card galaxy-a06">#}
+        {#            <div class="discount-badge">-1%</div>#}
+        {#            <div class="product-header">#}
+        {#                <button class="heart-icon">♡</button>#}
+        {#                <div class="signal-bars">#}
+        {#                    <div class="bar"></div>#}
+        {#                    <div class="bar"></div>#}
+        {#                    <div class="bar"></div>#}
+        {#                    <div class="bar"></div>#}
+        {#                </div>#}
+        {#            </div>#}
+        {##}
+        {#            <div class="product-image">#}
+        {#                <div class="phone-mockup">#}
+        {#                    <div class="phone-screen"></div>#}
+        {#                </div>#}
+        {#                <div class="warranty-badge">#}
+        {#                    <span>🛡️</span>#}
+        {#                    <span>11 ЛЕТ ГАРКОЛАТ</span>#}
+        {#                </div>#}
+        {#            </div>#}
+        {##}
+        {#            <div class="product-name">Samsung Galaxy A06</div>#}
+        {#            <div class="price red">1 520 988 сум</div>#}
+        {#            <div class="installment">179 000 сум х 12 мес</div>#}
+        {##}
+        {#            <div class="buttons">#}
+        {#                <button class="cart-btn">🛒</button>#}
+        {#                <button class="installment-btn">В рассрочку</button>#}
+        {#            </div>#}
+        {#        </div>#}
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination-container">
+        <div class="pagination" id="pagination">
+            <!-- Pagination buttons will be generated here -->
+        </div>
+        <div class="pagination-info">
+            Показано <span id="showingStart">1</span>-<span id="showingEnd">5</span> из <span id="totalItems">25</span>
+        </div>
+        <div class="items-per-page">
+            <span>Показать:</span>
+            <select id="itemsPerPage">
+                <option value="5">5</option>
+                <option value="10" selected>10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+            </select>
+            <span>товаров</span>
+        </div>
+    </div>
+</div>
+
+<!-- Product Detail Modal -->
+<div class="product-detail-modal" id="productDetailModal">
+    <div class="product-detail-content">
+        <div class="product-detail-header">
+            <h2 class="product-detail-title" id="productDetailTitle">Название товара</h2>
+            <button class="close-btn" onclick="closeProductDetail()">&times;</button>
         </div>
 
-        <!-- Xiaomi Redmi 14C -->
-        <div class="product-card redmi-14c">
-            <div class="product-header">
-                <button class="heart-icon">♡</button>
-                <div class="signal-bars">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
+        <div class="product-detail-body">
+            <div class="product-detail-grid">
+                <div class="product-detail-image" id="productDetailImage">
+                    <div class="product-detail-phone">
+                        <div class="product-detail-screen"></div>
+                    </div>
+                </div>
+
+                <div class="product-info">
+                    <div class="price-section">
+                        <div class="main-price" id="productDetailPrice">0 сум</div>
+                        <div class="installment-price" id="productDetailInstallment">0 сум х 12 мес</div>
+                    </div>
+
+                    <div class="product-badges" id="productDetailBadges">
+                        <span class="badge warranty">🛡️ 11 лет гарантия</span>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="action-btn add-to-favorites" id="detailFavoriteBtn"
+                                onclick="toggleDetailFavorite()">
+                            <span>♡</span>
+                        </button>
+                        <button class="action-btn buy-installment">
+                            <span>💳</span> Купить в рассрочку
+                        </button>
+                        <button class="action-btn add-to-cart" onclick="addDetailToCart()">
+                            <span>🛒</span> В корзину
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <div class="product-image">
-                <div class="phone-mockup">
-                    <div class="phone-screen"></div>
+            <div class="specifications">
+                <h3 class="spec-title">Характеристики</h3>
+                <div class="spec-grid" id="productDetailSpecs">
+                    <!-- Specifications will be populated here -->
                 </div>
-                <div class="warranty-badge">
-                    <span>🛡️</span>
-                    <span>11 ЛЕТ ГАРКОЛАТ</span>
-                </div>
-            </div>
-
-            <div class="product-name">Xiaomi Redmi 14C</div>
-            <div class="price">1 503 000 сум</div>
-            <div class="installment">181 000 сум х 12 мес</div>
-
-            <div class="buttons">
-                <button class="cart-btn">🛒</button>
-                <button class="installment-btn">В рассрочку</button>
-            </div>
-        </div>
-
-        <!-- Apple iPhone 16 Pro Max -->
-        <div class="product-card iphone-16">
-            <div class="product-header">
-                <button class="heart-icon">♡</button>
-                <div class="signal-bars">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
-            </div>
-
-            <div class="product-image">
-                <div class="phone-mockup">
-                    <div class="phone-screen"></div>
-                </div>
-                <div class="warranty-badge">
-                    <span>🛡️</span>
-                    <span>11 ЛЕТ ГАРКОЛАТ</span>
-                </div>
-            </div>
-
-            <div class="product-name">Apple iPhone 16 Pro Max</div>
-            <div class="price">18 849 000 сум</div>
-            <div class="installment">2 368 000 сум х 12 мес</div>
-
-            <div class="buttons">
-                <button class="cart-btn">🛒</button>
-                <button class="installment-btn">В рассрочку</button>
-            </div>
-        </div>
-
-        <!-- Samsung Galaxy A16 -->
-        <div class="product-card galaxy-a16">
-            <div class="product-header">
-                <button class="heart-icon">♡</button>
-                <div class="signal-bars">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
-            </div>
-
-            <div class="product-image">
-                <div class="phone-mockup">
-                    <div class="phone-screen"></div>
-                </div>
-                <div class="warranty-badge">
-                    <span>🛡️</span>
-                    <span>11 ЛЕТ ГАРКОЛАТ</span>
-                </div>
-            </div>
-
-            <div class="product-name">Samsung Galaxy A16</div>
-            <div class="price">2 147 000 сум</div>
-            <div class="installment">256 000 сум х 12 мес</div>
-
-            <div class="buttons">
-                <button class="cart-btn">🛒</button>
-                <button class="installment-btn">В рассрочку</button>
-            </div>
-        </div>
-
-        <!-- Samsung Galaxy A06 -->
-        <div class="product-card galaxy-a06">
-            <div class="discount-badge">-1%</div>
-            <div class="product-header">
-                <button class="heart-icon">♡</button>
-                <div class="signal-bars">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
-            </div>
-
-            <div class="product-image">
-                <div class="phone-mockup">
-                    <div class="phone-screen"></div>
-                </div>
-                <div class="warranty-badge">
-                    <span>🛡️</span>
-                    <span>11 ЛЕТ ГАРКОЛАТ</span>
-                </div>
-            </div>
-
-            <div class="product-name">Samsung Galaxy A06</div>
-            <div class="price red">1 520 988 сум</div>
-            <div class="installment">179 000 сум х 12 мес</div>
-
-            <div class="buttons">
-                <button class="cart-btn">🛒</button>
-                <button class="installment-btn">В рассрочку</button>
             </div>
         </div>
     </div>
 </div>
 
+<!-- Login Modal -->
+<div class="modal-overlay" id="loginModal">
+    <div class="modal">
+        <div class="modal-header">
+            <h2 class="modal-title">Вход</h2>
+            <button class="close-btn" onclick="closeModal('loginModal')">&times;</button>
+        </div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label class="form-label">Имя пользователя</label>
+                <input type="text" class="form-input" id="loginUsername" name="username" required>
+                <div class="error-message" id="loginUsernameError"></div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Пароль</label>
+                <div class="password-toggle">
+                    <input type="password" class="form-input" id="loginPassword" name="password" required>
+                    <button type="button" class="password-toggle-btn" onclick="togglePassword('loginPassword')">👁️
+                    </button>
+                </div>
+                <div class="error-message" id="loginPasswordError"></div>
+            </div>
+
+            <button type="submit" class="submit-btn">Войти</button>
+        </form>
+
+        <div class="modal-footer">
+            <p>Нет аккаунта? <a href="#" class="link-btn" onclick="switchModal('loginModal', 'registerModal')">Зарегистрироваться</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Register Modal -->
+<div class="modal-overlay" id="registerModal">
+    <div class="modal">
+        <div class="modal-header">
+            <h2 class="modal-title">Регистрация</h2>
+            <button class="close-btn" onclick="closeModal('registerModal')">&times;</button>
+        </div>
+
+        <form id="registerForm">
+            <div class="form-group">
+                <label class="form-label">Имя</label>
+                <input type="text" class="form-input" id="registerFirstName" name="first_name" required>
+                <div class="error-message" id="registerFirstNameError"></div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Имя пользователя</label>
+                <input type="text" class="form-input" id="registerUsername" name="username" required>
+                <div class="error-message" id="registerUsernameError"></div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-input" id="registerEmail" name="email" required>
+                <div class="error-message" id="registerEmailError"></div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Пароль</label>
+                <div class="password-toggle">
+                    <input type="password" class="form-input" id="registerPassword" name="password" required>
+                    <button type="button" class="password-toggle-btn" onclick="togglePassword('registerPassword')">👁️
+                    </button>
+                </div>
+                <div class="error-message" id="registerPasswordError"></div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Подтвердите пароль</label>
+                <div class="password-toggle">
+                    <input type="password" class="form-input" id="registerConfirmPassword" name="confirm_password"
+                           required>
+                    <button type="button" class="password-toggle-btn"
+                            onclick="togglePassword('registerConfirmPassword')">👁️
+                    </button>
+                </div>
+                <div class="error-message" id="registerConfirmPasswordError"></div>
+            </div>
+
+            <button type="submit" class="submit-btn">Зарегистрироваться</button>
+        </form>
+
+        <div class="modal-footer">
+            <p>Уже есть аккаунт? <a href="#" class="link-btn"
+                                    onclick="switchModal('registerModal', 'loginModal')">Войти</a></p>
+        </div>
+    </div>
+</div>
+
 <script>
+    // Pagination and Product Management
+    const allProducts = [
+        {
+            name: "Samsung Galaxy A55",
+            price: 4553800,
+            installment: 534000,
+            class: "galaxy-a55",
+            discount: null,
+            specs: {
+                "Экран": "6.6\" Super AMOLED",
+                "Процессор": "Exynos 1480",
+                "ОЗУ": "8 ГБ",
+                "Память": "256 ГБ",
+                "Камера": "50 МП + 12 МП + 5 МП",
+                "Батарея": "5000 мАч",
+                "ОС": "Android 14"
+            }
+        },
+        {
+            name: "Xiaomi Redmi 14C",
+            price: 1503000,
+            installment: 181000,
+            class: "redmi-14c",
+            discount: null,
+            specs: {
+                "Экран": "6.88\" IPS LCD",
+                "Процессор": "MediaTek Helio G81-Ultra",
+                "ОЗУ": "4 ГБ",
+                "Память": "128 ГБ",
+                "Камера": "50 МП + 0.08 МП",
+                "Батарея": "5160 мАч",
+                "ОС": "Android 14"
+            }
+        },
+        {
+            name: "Apple iPhone 16 Pro Max",
+            price: 18849000,
+            installment: 2368000,
+            class: "iphone-16",
+            discount: null,
+            specs: {
+                "Экран": "6.9\" Super Retina XDR",
+                "Процессор": "A18 Pro",
+                "ОЗУ": "8 ГБ",
+                "Память": "256 ГБ",
+                "Камера": "48 МП + 48 МП + 12 МП",
+                "Батарея": "4441 мАч",
+                "ОС": "iOS 18"
+            }
+        },
+        {
+            name: "Samsung Galaxy A16",
+            price: 2147000,
+            installment: 256000,
+            class: "galaxy-a16",
+            discount: null,
+            specs: {
+                "Экран": "6.7\" Super AMOLED",
+                "Процессор": "MediaTek Helio G85",
+                "ОЗУ": "4 ГБ",
+                "Память": "128 ГБ",
+                "Камера": "50 МП + 5 МП + 2 МП",
+                "Батарея": "5000 мАч",
+                "ОС": "Android 14"
+            }
+        },
+        {
+            name: "Samsung Galaxy A06",
+            price: 1520988,
+            installment: 179000,
+            class: "galaxy-a06",
+            discount: "-1%",
+            specs: {
+                "Экран": "6.7\" PLS LCD",
+                "Процессор": "MediaTek Helio G85",
+                "ОЗУ": "4 ГБ",
+                "Память": "64 ГБ",
+                "Камера": "50 МП + 2 МП",
+                "Батарея": "5000 мАч",
+                "ОС": "Android 14"
+            }
+        },
+        {
+            name: "iPhone 15 Pro",
+            price: 15500000,
+            installment: 1950000,
+            class: "iphone-16",
+            discount: null,
+            specs: {
+                "Экран": "6.1\" Super Retina XDR",
+                "Процессор": "A17 Pro",
+                "ОЗУ": "8 ГБ",
+                "Память": "128 ГБ",
+                "Камера": "48 МП + 12 МП + 12 МП",
+                "Батарея": "3274 мАч",
+                "ОС": "iOS 17"
+            }
+        },
+        {
+            name: "Samsung Galaxy S24",
+            price: 8900000,
+            installment: 1100000,
+            class: "galaxy-a55",
+            discount: "-5%",
+            specs: {
+                "Экран": "6.2\" Dynamic AMOLED 2X",
+                "Процессор": "Snapdragon 8 Gen 3",
+                "ОЗУ": "8 ГБ",
+                "Память": "256 ГБ",
+                "Камера": "50 МП + 10 МП + 12 МП",
+                "Батарея": "4000 мАч",
+                "ОС": "Android 14"
+            }
+        },
+        {
+            name: "Xiaomi 14T Pro",
+            price: 6500000,
+            installment: 780000,
+            class: "redmi-14c",
+            discount: null,
+            specs: {
+                "Экран": "6.67\" AMOLED",
+                "Процессор": "MediaTek Dimensity 9300+",
+                "ОЗУ": "12 ГБ",
+                "Память": "512 ГБ",
+                "Камера": "50 МП + 50 МП + 12 МП",
+                "Батарея": "5000 мАч",
+                "ОС": "Android 14"
+            }
+        },
+        {
+            name: "OnePlus 12",
+            price: 7200000,
+            installment: 850000,
+            class: "galaxy-a16",
+            discount: null,
+            specs: {
+                "Экран": "6.82\" LTPO AMOLED",
+                "Процессор": "Snapdragon 8 Gen 3",
+                "ОЗУ": "12 ГБ",
+                "Память": "256 ГБ",
+                "Камера": "50 МП + 64 МП + 48 МП",
+                "Батарея": "5400 мАч",
+                "ОС": "Android 14"
+            }
+        },
+        {
+            name: "Google Pixel 8",
+            price: 5800000,
+            installment: 690000,
+            class: "galaxy-a06",
+            discount: "-3%",
+            specs: {
+                "Экран": "6.2\" OLED",
+                "Процессор": "Google Tensor G3",
+                "ОЗУ": "8 ГБ",
+                "Память": "128 ГБ",
+                "Камера": "50 МП + 12 МП",
+                "Батарея": "4575 мАч",
+                "ОС": "Android 14"
+            }
+        }
+    ];
+
+    // Add remaining products with specs...
+    const remainingProducts = [
+        { name: "Huawei P60 Pro", price: 4900000, installment: 580000, class: "galaxy-a55", discount: null, specs: {"Экран": "6.67\" OLED", "Процессор": "Snapdragon 8+ Gen 1", "ОЗУ": "8 ГБ", "Память": "256 ГБ", "Камера": "48 МП + 13 МП + 40 МП", "Батарея": "4815 мАч", "ОС": "HarmonyOS 3.1"} },
+        { name: "Vivo X100", price: 5500000, installment: 650000, class: "redmi-14c", discount: null, specs: {"Экран": "6.78\" AMOLED", "Процессор": "MediaTek Dimensity 9300", "ОЗУ": "12 ГБ", "Память": "256 ГБ", "Камера": "50 МП + 64 МП + 50 МП", "Батарея": "5000 мАч", "ОС": "Android 14"} },
+        { name: "Oppo Find X7", price: 6800000, installment: 800000, class: "iphone-16", discount: null, specs: {"Экран": "6.78\" LTPO AMOLED", "Процессор": "Snapdragon 8 Gen 3", "ОЗУ": "12 ГБ", "Память": "256 ГБ", "Камера": "50 МП + 50 МП + 64 МП", "Батарея": "5000 мАч", "ОС": "Android 14"} },
+        { name: "Realme GT 5", price: 3200000, installment: 380000, class: "galaxy-a16", discount: "-2%", specs: {"Экран": "6.74\" AMOLED", "Процессор": "Snapdragon 8 Gen 2", "ОЗУ": "8 ГБ", "Память": "256 ГБ", "Камера": "50 МП + 8 МП + 2 МП", "Батарея": "5240 мАч", "ОС": "Android 14"} },
+        { name: "Nothing Phone 2", price: 4100000, installment: 490000, class: "galaxy-a06", discount: null, specs: {"Экран": "6.7\" LTPO OLED", "Процессор": "Snapdragon 8+ Gen 1", "ОЗУ": "8 ГБ", "Память": "128 ГБ", "Камера": "50 МП + 50 МП", "Батарея": "4700 мАч", "ОС": "Android 14"} },
+        { name: "Sony Xperia 1 V", price: 9500000, installment: 1150000, class: "galaxy-a55", discount: null, specs: {"Экран": "6.5\" OLED 4K", "Процессор": "Snapdragon 8 Gen 2", "ОЗУ": "12 ГБ", "Память": "256 ГБ", "Камера": "48 МП + 12 МП + 12 МП", "Батарея": "5000 мАч", "ОС": "Android 13"} },
+        { name: "Asus ROG Phone 8", price: 8200000, installment: 980000, class: "redmi-14c", discount: "-4%", specs: {"Экран": "6.78\" AMOLED", "Процессор": "Snapdragon 8 Gen 3", "ОЗУ": "16 ГБ", "Память": "512 ГБ", "Камера": "50 МП + 13 МП + 5 МП", "Батарея": "6000 мАч", "ОС": "Android 14"} },
+        { name: "Motorola Edge 50", price: 3800000, installment: 450000, class: "galaxy-a16", discount: null, specs: {"Экран": "6.7\" pOLED", "Процессор": "Snapdragon 7 Gen 1", "ОЗУ": "8 ГБ", "Память": "256 ГБ", "Камера": "50 МП + 13 МП + 10 МП", "Батарея": "5000 мАч", "ОС": "Android 14"} },
+        { name: "Honor Magic 6", price: 4500000, installment: 530000, class: "galaxy-a06", discount: null, specs: {"Экран": "6.78\" LTPO OLED", "Процессор": "Snapdragon 8 Gen 3", "ОЗУ": "12 ГБ", "Память": "256 ГБ", "Камера": "50 МП + 50 МП + 180 МП", "Батарея": "5600 мАч", "ОС": "Android 14"} },
+        { name: "Tecno Phantom V", price: 2800000, installment: 330000, class: "galaxy-a55", discount: null, specs: {"Экран": "6.42\" AMOLED", "Процессор": "MediaTek Dimensity 9000+", "ОЗУ": "8 ГБ", "Память": "256 ГБ", "Камера": "50 МП + 13 МП + 2 МП", "Батарея": "4000 мАч", "ОС": "Android 13"} },
+        { name: "Infinix Zero 40", price: 2100000, installment: 250000, class: "redmi-14c", discount: null, specs: {"Экран": "6.78\" AMOLED", "Процессор": "MediaTek Dimensity 8200", "ОЗУ": "8 ГБ", "Память": "256 ГБ", "Камера": "108 МП + 50 МП + 2 МП", "Батарея": "5000 мАч", "ОС": "Android 14"} },
+        { name: "Poco X6 Pro", price: 2900000, installment: 340000, class: "iphone-16", discount: "-6%", specs: {"Экран": "6.67\" AMOLED", "Процессор": "MediaTek Dimensity 8300-Ultra", "ОЗУ": "8 ГБ", "Память": "256 ГБ", "Камера": "64 МП + 8 МП + 2 МП", "Батарея": "5000 мАч", "ОС": "Android 14"} },
+        { name: "Redmi Note 13", price: 1800000, installment: 210000, class: "galaxy-a16", discount: null, specs: {"Экран": "6.67\" AMOLED", "Процессор": "Snapdragon 685", "ОЗУ": "6 ГБ", "Память": "128 ГБ", "Камера": "108 МП + 8 МП + 2 МП", "Батарея": "5000 мАч", "ОС": "Android 13"} },
+        { name: "Galaxy M55", price: 3500000, installment: 410000, class: "galaxy-a06", discount: null, specs: {"Экран": "6.7\" Super AMOLED+", "Процессор": "Snapdragon 7 Gen 1", "ОЗУ": "8 ГБ", "Память": "128 ГБ", "Камера": "50 МП + 8 МП + 2 МП", "Батарея": "5000 мАч", "ОС": "Android 14"} },
+        { name: "iPhone 14", price: 12000000, installment: 1400000, class: "iphone-16", discount: "-8%", specs: {"Экран": "6.1\" Super Retina XDR", "Процессор": "A15 Bionic", "ОЗУ": "6 ГБ", "Память": "128 ГБ", "Камера": "12 МП + 12 МП", "Батарея": "3279 мАч", "ОС": "iOS 16"} }
+    ];
+
+    // Combine all products
+    allProducts.push(...remainingProducts); discount: null },
+        { name: "iPhone 14", price: 12000000, installment: 1400000, class: "iphone-16", discount: "-8%" }
+    ];
+
+    let currentPage = 1;
+    let itemsPerPage = 10;
+    let currentProducts = [...allProducts];
+    let currentSort = 'default';
+
+    function formatPrice(price) {
+        return price.toLocaleString('ru-RU') + ' сум';
+    }
+
+    function createProductCard(product, index) {
+        return `
+            <div class="product-card ${product.class}">
+                ${product.discount ? `<div class="discount-badge">${product.discount}</div>` : ''}
+                <div class="product-header">
+                    <button class="heart-icon">♡</button>
+                    <div class="signal-bars">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+                </div>
+
+                <div class="product-image">
+                    <div class="phone-mockup">
+                        <div class="phone-screen"></div>
+                    </div>
+                    <div class="warranty-badge">
+                        <span>🛡️</span>
+                        <span>11 ЛЕТ ГАРКОЛАТ</span>
+                    </div>
+                </div>
+
+                <div class="product-name">${product.name}</div>
+                <div class="price ${product.discount ? 'red' : ''}">${formatPrice(product.price)}</div>
+                <div class="installment">${formatPrice(product.installment)} х 12 мес</div>
+
+                <div class="buttons">
+                    <button class="cart-btn">🛒</button>
+                    <button class="installment-btn">В рассрочку</button>
+                </div>
+
+                <div style="margin-top: 10px;">
+                    <button class="detail-btn" onclick="openProductDetail(${index})" style="width: 100%; padding: 8px; background: #f0f0f0; border: 1px solid #ddd; border-radius: 6px; cursor: pointer; font-size: 14px; transition: all 0.2s;">
+                        📱 Подробнее
+                    </button>
+                </div>
+            </div>
+        `;
+    }
+
+    function sortProducts(products, sortType) {
+        const sorted = [...products];
+
+        switch(sortType) {
+            case 'price-asc':
+                return sorted.sort((a, b) => a.price - b.price);
+            case 'price-desc':
+                return sorted.sort((a, b) => b.price - a.price);
+            case 'name-asc':
+                return sorted.sort((a, b) => a.name.localeCompare(b.name, 'ru'));
+            case 'name-desc':
+                return sorted.sort((a, b) => b.name.localeCompare(a.name, 'ru'));
+            default:
+                return sorted;
+        }
+    }
+
+    function updateProductGrid() {
+        const grid = document.getElementById('productGrid');
+        grid.classList.add('loading');
+
+        setTimeout(() => {
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pageProducts = currentProducts.slice(startIndex, endIndex);
+
+            grid.innerHTML = pageProducts.map(product => createProductCard(product)).join('');
+
+            // Re-attach event listeners
+            attachProductEventListeners();
+
+            grid.classList.remove('loading');
+            updatePaginationInfo();
+            updatePagination();
+        }, 200);
+    }
+
+    function updatePaginationInfo() {
+        const totalItems = currentProducts.length;
+        const startItem = Math.min((currentPage - 1) * itemsPerPage + 1, totalItems);
+        const endItem = Math.min(currentPage * itemsPerPage, totalItems);
+
+        document.getElementById('totalResults').textContent = totalItems;
+        document.getElementById('totalItems').textContent = totalItems;
+        document.getElementById('showingStart').textContent = startItem;
+        document.getElementById('showingEnd').textContent = endItem;
+    }
+
+    function updatePagination() {
+        const totalPages = Math.ceil(currentProducts.length / itemsPerPage);
+        const pagination = document.getElementById('pagination');
+
+        let paginationHTML = '';
+
+        // Previous button
+        paginationHTML += `<button class="pagination-btn" ${currentPage === 1 ? 'disabled' : ''} onclick="changePage(${currentPage - 1})">‹</button>`;
+
+        // Page numbers
+        if (totalPages <= 7) {
+            // Show all pages if 7 or fewer
+            for (let i = 1; i <= totalPages; i++) {
+                paginationHTML += `<button class="pagination-btn ${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
+            }
+        } else {
+            // Show first page
+            paginationHTML += `<button class="pagination-btn ${1 === currentPage ? 'active' : ''}" onclick="changePage(1)">1</button>`;
+
+            if (currentPage > 3) {
+                paginationHTML += `<button class="pagination-btn dots">...</button>`;
+            }
+
+            // Show pages around current page
+            const start = Math.max(2, currentPage - 1);
+            const end = Math.min(totalPages - 1, currentPage + 1);
+
+            for (let i = start; i <= end; i++) {
+                paginationHTML += `<button class="pagination-btn ${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
+            }
+
+            if (currentPage < totalPages - 2) {
+                paginationHTML += `<button class="pagination-btn dots">...</button>`;
+            }
+
+            // Show last page
+            if (totalPages > 1) {
+                paginationHTML += `<button class="pagination-btn ${totalPages === currentPage ? 'active' : ''}" onclick="changePage(${totalPages})">${totalPages}</button>`;
+            }
+        }
+
+        // Next button
+        paginationHTML += `<button class="pagination-btn" ${currentPage === totalPages ? 'disabled' : ''} onclick="changePage(${currentPage + 1})">›</button>`;
+
+        pagination.innerHTML = paginationHTML;
+    }
+
+    function changePage(page) {
+        const totalPages = Math.ceil(currentProducts.length / itemsPerPage);
+        if (page >= 1 && page <= totalPages && page !== currentPage) {
+            currentPage = page;
+            updateProductGrid();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    }
+
+    function attachProductEventListeners() {
+        // Heart icons
+        document.querySelectorAll('.heart-icon').forEach(heart => {
+            heart.addEventListener('click', function() {
+                if (this.textContent === '♡') {
+                    this.textContent = '♥';
+                    this.style.color = '#ff4757';
+                } else {
+                    this.textContent = '♡';
+                    this.style.color = '#ccc';
+                }
+            });
+        });
+
+        // Cart buttons
+        document.querySelectorAll('.cart-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.style.background = '#ff4757';
+                this.style.color = 'white';
+                this.style.borderColor = '#ff4757';
+
+                // Update cart count
+                const cartCount = document.querySelector('.cart-count');
+                cartCount.textContent = parseInt(cartCount.textContent) + 1;
+
+                setTimeout(() => {
+                    this.style.background = 'white';
+                    this.style.color = '#333';
+                    this.style.borderColor = '#ddd';
+                }, 200);
+            });
+        });
+
+        // Installment buttons
+        document.querySelectorAll('.installment-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                alert('Переход к оформлению рассрочки...');
+            });
+        });
+    }
+
+    // Sort dropdown
+    document.getElementById('sortSelect').addEventListener('change', function() {
+        currentSort = this.value;
+        currentProducts = sortProducts(allProducts, currentSort);
+        currentPage = 1;
+        updateProductGrid();
+    });
+
+    // Items per page dropdown
+    document.getElementById('itemsPerPage').addEventListener('change', function() {
+        itemsPerPage = parseInt(this.value);
+        currentPage = 1;
+        updateProductGrid();
+    });
+
+    // Initialize the page
+    function initializePage() {
+        currentProducts = sortProducts(allProducts, currentSort);
+        updateProductGrid();
+    }
+
     // Header interactions
     document.querySelector('.catalog-btn').addEventListener('click', function() {
         alert('Открыть каталог товаров');
+    });
+
+    // Modal Functions
+    function openModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+        clearFormErrors(modalId);
+    }
+
+    function switchModal(currentModal, targetModal) {
+        closeModal(currentModal);
+        setTimeout(() => openModal(targetModal), 100);
+    }
+
+    function togglePassword(inputId) {
+        const input = document.getElementById(inputId);
+        const button = input.nextElementSibling;
+
+        if (input.type === 'password') {
+            input.type = 'text';
+            button.textContent = '🙈';
+        } else {
+            input.type = 'password';
+            button.textContent = '👁️';
+        }
+    }
+
+    function clearFormErrors(modalId) {
+        const modal = document.getElementById(modalId);
+        const errorMessages = modal.querySelectorAll('.error-message');
+        const inputs = modal.querySelectorAll('.form-input');
+
+        errorMessages.forEach(error => {
+            error.style.display = 'none';
+            error.textContent = '';
+        });
+
+        inputs.forEach(input => {
+            input.classList.remove('error');
+        });
+    }
+
+    function showError(inputId, message) {
+        const input = document.getElementById(inputId);
+        const errorDiv = document.getElementById(inputId + 'Error');
+
+        input.classList.add('error');
+        errorDiv.textContent = message;
+        errorDiv.style.display = 'block';
+    }
+
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+
+    // Close modals when clicking outside
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+        overlay.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal(this.id);
+            }
+        });
+    });
+
+    // Close modals with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const activeModal = document.querySelector('.modal-overlay.active');
+            if (activeModal) {
+                closeModal(activeModal.id);
+            }
+        }
+    });
+
+    // Login Form Submission
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const username = document.getElementById('loginUsername').value.trim();
+        const password = document.getElementById('loginPassword').value;
+
+        let hasErrors = false;
+
+        // Clear previous errors
+        clearFormErrors('loginModal');
+
+        // Validate username
+        if (!username) {
+            showError('loginUsername', 'Введите имя пользователя');
+            hasErrors = true;
+        } else if (username.length < 3) {
+            showError('loginUsername', 'Имя пользователя должно содержать минимум 3 символа');
+            hasErrors = true;
+        }
+
+        // Validate password
+        if (!password) {
+            showError('loginPassword', 'Введите пароль');
+            hasErrors = true;
+        } else if (password.length < 6) {
+            showError('loginPassword', 'Пароль должен содержать минимум 6 символов');
+            hasErrors = true;
+        }
+
+        if (!hasErrors) {
+            alert(`Успешный вход!\nПользователь: ${username}`);
+            closeModal('loginModal');
+            // Here you would typically send the data to your server
+        }
+    });
+
+    // Register Form Submission
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const firstName = document.getElementById('registerFirstName').value.trim();
+        const username = document.getElementById('registerUsername').value.trim();
+        const email = document.getElementById('registerEmail').value.trim();
+        const password = document.getElementById('registerPassword').value;
+        const confirmPassword = document.getElementById('registerConfirmPassword').value;
+
+        let hasErrors = false;
+
+        // Clear previous errors
+        clearFormErrors('registerModal');
+
+        // Validate first name
+        if (!firstName) {
+            showError('registerFirstName', 'Введите имя');
+            hasErrors = true;
+        } else if (firstName.length < 2) {
+            showError('registerFirstName', 'Имя должно содержать минимум 2 символа');
+            hasErrors = true;
+        }
+
+        // Validate username
+        if (!username) {
+            showError('registerUsername', 'Введите имя пользователя');
+            hasErrors = true;
+        } else if (username.length < 3) {
+            showError('registerUsername', 'Имя пользователя должно содержать минимум 3 символа');
+            hasErrors = true;
+        }
+
+        // Validate email
+        if (!email) {
+            showError('registerEmail', 'Введите email');
+            hasErrors = true;
+        } else if (!validateEmail(email)) {
+            showError('registerEmail', 'Введите корректный email');
+            hasErrors = true;
+        }
+
+        // Validate password
+        if (!password) {
+            showError('registerPassword', 'Введите пароль');
+            hasErrors = true;
+        } else if (password.length < 6) {
+            showError('registerPassword', 'Пароль должен содержать минимум 6 символов');
+            hasErrors = true;
+        }
+
+        // Validate confirm password
+        if (!confirmPassword) {
+            showError('registerConfirmPassword', 'Подтвердите пароль');
+            hasErrors = true;
+        } else if (password !== confirmPassword) {
+            showError('registerConfirmPassword', 'Пароли не совпадают');
+            hasErrors = true;
+        }
+
+        if (!hasErrors) {
+            alert(`Успешная регистрация!\nИмя: ${firstName}\nПользователь: ${username}\nEmail: ${email}`);
+            closeModal('registerModal');
+            // Here you would typically send the data to your server
+        }
     });
 
     document.querySelector('.search-btn').addEventListener('click', function() {
@@ -657,43 +1995,13 @@
                     alert('Открыть корзину покупок');
                     break;
                 case 'Войти':
-                    alert('Открыть форму входа');
+                    openModal('loginModal');
                     break;
             }
         });
     });
 
-    // Add interactivity
-    document.querySelectorAll('.heart-icon').forEach(heart => {
-        heart.addEventListener('click', function() {
-            if (this.textContent === '♡') {
-                this.textContent = '♥';
-                this.style.color = '#ff4757';
-            } else {
-                this.textContent = '♡';
-                this.style.color = '#ccc';
-            }
-        });
-    });
-
-    document.querySelectorAll('.cart-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            this.style.background = '#ff4757';
-            this.style.color = 'white';
-            this.style.borderColor = '#ff4757';
-            setTimeout(() => {
-                this.style.background = 'white';
-                this.style.color = '#333';
-                this.style.borderColor = '#ddd';
-            }, 200);
-        });
-    });
-
-    document.querySelectorAll('.installment-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            alert('Переход к оформлению рассрочки...');
-        });
-    });
+    // Add interactivity (removed old product event listeners as they're now handled in attachProductEventListeners)
 </script>
 </body>
 </html>
