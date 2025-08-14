@@ -23,3 +23,7 @@ class ProductDetailView(DetailView):
 
 class MainView(TemplateView):
     template_name = 'apps/main.html'
+
+
+class BlogListView(TemplateView):
+    template_name = 'apps/blogs/blog.html'

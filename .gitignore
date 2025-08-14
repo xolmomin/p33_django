@@ -4,7 +4,6 @@
 [Ll]ib
 [Ll]ib64
 [Ll]ocal
-[Ss]cripts
 pyvenv.cfg
 .idea
 .venv
@@ -12,6 +11,7 @@ TODO
 pip-selfcheck.json
 .idea/**/workspace.xml
 .idea/**/tasks.xml
+templates/website
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
