@@ -723,158 +723,42 @@
                         <div class="col-md-8 col-sm-12">
                             <div class="blog-list">
                                 <ul>
-                                    <li>
-                                        <div class="row no-gutters">
-                                            <div class="col-lg-4 col-md-12 col-sm-12">
-                                                <div class="blog-img">
-                                                    <img
-                                                            src="{% static 'apps/vendors/images/img2.jpg' %}"
-                                                            alt=""
-                                                            class="bg_img"
-                                                    />
+                                    {% for blog in blogs %}
+                                        <li>
+                                            <div class="row no-gutters">
+                                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                                    <div class="blog-img">
+                                                        <img
+                                                                src="{% static 'apps/vendors/images/img2.jpg' %}"
+                                                                alt=""
+                                                                class="bg_img"
+                                                        />
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-lg-8 col-md-12 col-sm-12">
-                                                <div class="blog-caption">
-                                                    <h4>
-                                                        <a href="#"
-                                                        >Lorem ipsum dolor sit amet, consectetur
-                                                            adipisicing elit</a
-                                                        >
-                                                    </h4>
-                                                    <div class="blog-by">
-                                                        <p>
-                                                            Lorem ipsum dolor sit amet, consectetur
-                                                            adipisicing elit, sed do eiusmod tempor
-                                                            incididunt ut labore et dolore magna aliqua.
-                                                            Ut enim ad minim veniam, quis nostrud
-                                                            exercitation ullamco laboris nisi ut aliquip
-                                                            ex ea commodo
-                                                        </p>
-                                                        <div class="pt-10">
-                                                            <a href="#" class="btn btn-outline-primary"
-                                                            >Read More</a
-                                                            >
+                                                <div class="col-lg-8 col-md-12 col-sm-12">
+                                                    <div class="blog-caption">
+                                                        <h4>
+                                                            <a href="#">{{ blog.title }}</a>
+                                                        </h4>
+                                                        <div class="blog-by">
+                                                            <p>
+                                                                Lorem ipsum dolor sit amet, consectetur
+                                                                adipisicing elit, sed do eiusmod tempor
+                                                                incididunt ut labore et dolore magna aliqua.
+                                                                Ut enim ad minim veniam, quis nostrud
+                                                                exercitation ullamco laboris nisi ut aliquip
+                                                                ex ea commodo
+                                                            </p>
+                                                            <div class="pt-10">
+                                                                <a href="{% url 'blog_detail_view' blog.pk %}" class="btn btn-outline-primary">Read More</a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="row no-gutters">
-                                            <div class="col-lg-4 col-md-12 col-sm-12">
-                                                <div class="blog-img">
-                                                    <img
-                                                            src="{% static 'apps/vendors/images/img3.jpg' %}"
-                                                            alt=""
-                                                            class="bg_img"
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-8 col-md-12 col-sm-12">
-                                                <div class="blog-caption">
-                                                    <h4>
-                                                        <a href="#"
-                                                        >Lorem ipsum dolor sit amet, consectetur
-                                                            adipisicing elit</a
-                                                        >
-                                                    </h4>
-                                                    <div class="blog-by">
-                                                        <p>
-                                                            Lorem ipsum dolor sit amet, consectetur
-                                                            adipisicing elit, sed do eiusmod tempor
-                                                            incididunt ut labore et dolore magna aliqua.
-                                                            Ut enim ad minim veniam, quis nostrud
-                                                            exercitation ullamco laboris nisi ut aliquip
-                                                            ex ea commodo
-                                                        </p>
-                                                        <div class="pt-10">
-                                                            <a href="#" class="btn btn-outline-primary"
-                                                            >Read More</a
-                                                            >
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="row no-gutters">
-                                            <div class="col-lg-4 col-md-12 col-sm-12">
-                                                <div class="blog-img">
-                                                    <img
-                                                            src="{% static 'apps/vendors/images/img4.jpg' %}"
-                                                            alt=""
-                                                            class="bg_img"
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-8 col-md-12 col-sm-12">
-                                                <div class="blog-caption">
-                                                    <h4>
-                                                        <a href="#"
-                                                        >Lorem ipsum dolor sit amet, consectetur
-                                                            adipisicing elit</a
-                                                        >
-                                                    </h4>
-                                                    <div class="blog-by">
-                                                        <p>
-                                                            Lorem ipsum dolor sit amet, consectetur
-                                                            adipisicing elit, sed do eiusmod tempor
-                                                            incididunt ut labore et dolore magna aliqua.
-                                                            Ut enim ad minim veniam, quis nostrud
-                                                            exercitation ullamco laboris nisi ut aliquip
-                                                            ex ea commodo
-                                                        </p>
-                                                        <div class="pt-10">
-                                                            <a href="#" class="btn btn-outline-primary"
-                                                            >Read More</a
-                                                            >
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="row no-gutters">
-                                            <div class="col-lg-4 col-md-12 col-sm-12">
-                                                <div class="blog-img">
-                                                    <img
-                                                            src="{% static 'apps/vendors/images/img5.jpg' %}"
-                                                            alt=""
-                                                            class="bg_img"
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-8 col-md-12 col-sm-12">
-                                                <div class="blog-caption">
-                                                    <h4>
-                                                        <a href="#"
-                                                        >Lorem ipsum dolor sit amet, consectetur
-                                                            adipisicing elit</a
-                                                        >
-                                                    </h4>
-                                                    <div class="blog-by">
-                                                        <p>
-                                                            Lorem ipsum dolor sit amet, consectetur
-                                                            adipisicing elit, sed do eiusmod tempor
-                                                            incididunt ut labore et dolore magna aliqua.
-                                                            Ut enim ad minim veniam, quis nostrud
-                                                            exercitation ullamco laboris nisi ut aliquip
-                                                            ex ea commodo
-                                                        </p>
-                                                        <div class="pt-10">
-                                                            <a href="#" class="btn btn-outline-primary"
-                                                            >Read More</a
-                                                            >
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
+                                        </li>
+                                    {% endfor %}
+
                                 </ul>
                             </div>
                             <div class="blog-pagination">

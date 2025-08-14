@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
-from django.db.models import Model, CharField, FloatField, TextField, ForeignKey, CASCADE, ImageField, SlugField
+from django.db.models import Model, CharField, FloatField, TextField, ForeignKey, CASCADE, ImageField, SlugField, \
+    DateTimeField
 from django.utils.text import slugify
 
 
@@ -40,3 +41,17 @@ class Comment(Model):
     product = ForeignKey('apps.Product', CASCADE)
     user = ForeignKey('auth.User', CASCADE)
     comment = CharField(max_length=255)
+
+
+class BlogCategory(Model):
+    name = CharField(max_length=255)
+
+
+class Blog(Model):
+    title = CharField(max_length=255)
+    description = TextField()
+    image = ImageField(upload_to='blogs/%Y/%m/%d')
+    category = ForeignKey('apps.BlogCategory', CASCADE)
+    created_by = ForeignKey('auth.User', CASCADE, editable=False)
+    updated_at = DateTimeField(auto_now_add=True)
+    created_at = DateTimeField(auto_now=True)

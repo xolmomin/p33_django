@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 	<head>
@@ -9,19 +10,19 @@
 		<link
 			rel="apple-touch-icon"
 			sizes="180x180"
-			href="vendors/images/apple-touch-icon.png"
+			href="{% static 'apps/vendors/images/apple-touch-icon.png' %}"
 		/>
 		<link
 			rel="icon"
 			type="image/png"
 			sizes="32x32"
-			href="vendors/images/favicon-32x32.png"
+			href="{% static 'apps/vendors/images/favicon-32x32.png' %}"
 		/>
 		<link
 			rel="icon"
 			type="image/png"
 			sizes="16x16"
-			href="vendors/images/favicon-16x16.png"
+			href="{% static 'apps/vendors/images/favicon-16x16.png' %}"
 		/>
 
 		<!-- Mobile Specific Metas -->
@@ -36,13 +37,13 @@
 			rel="stylesheet"
 		/>
 		<!-- CSS -->
-		<link rel="stylesheet" type="text/css" href="vendors/styles/core.css" />
+		<link rel="stylesheet" type="text/css" href="{% static 'apps/vendors/styles/core.css' %}" />
 		<link
 			rel="stylesheet"
 			type="text/css"
-			href="vendors/styles/icon-font.min.css"
+			href="{% static 'apps/vendors/styles/icon-font.min.css' %}"
 		/>
-		<link rel="stylesheet" type="text/css" href="vendors/styles/style.css" />
+		<link rel="stylesheet" type="text/css" href="{% static 'apps/vendors/styles/style.css' %}" />
 
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script
@@ -82,7 +83,7 @@
 		<div class="pre-loader">
 			<div class="pre-loader-box">
 				<div class="loader-logo">
-					<img src="vendors/images/deskapp-logo.svg" alt="" />
+					<img src="{% static 'apps/vendors/images/deskapp-logo.svg' %}" alt="" />
 				</div>
 				<div class="loader-progress" id="progress_div">
 					<div class="bar" id="bar1"></div>
@@ -186,7 +187,7 @@
 								<ul>
 									<li>
 										<a href="#">
-											<img src="vendors/images/img.jpg" alt="" />
+											<img src="{% static 'apps/vendors/images/img.jpg' %}" alt="" />
 											<h3>John Doe</h3>
 											<p>
 												Lorem ipsum dolor sit amet, consectetur adipisicing
@@ -196,7 +197,7 @@
 									</li>
 									<li>
 										<a href="#">
-											<img src="vendors/images/photo1.jpg" alt="" />
+											<img src="{% static 'apps/vendors/images/photo1.jpg' %}" alt="" />
 											<h3>Lea R. Frith</h3>
 											<p>
 												Lorem ipsum dolor sit amet, consectetur adipisicing
@@ -206,7 +207,7 @@
 									</li>
 									<li>
 										<a href="#">
-											<img src="vendors/images/photo2.jpg" alt="" />
+											<img src="{% static 'apps/vendors/images/photo2.jpg' %}" alt="" />
 											<h3>Erik L. Richards</h3>
 											<p>
 												Lorem ipsum dolor sit amet, consectetur adipisicing
@@ -216,7 +217,7 @@
 									</li>
 									<li>
 										<a href="#">
-											<img src="vendors/images/photo3.jpg" alt="" />
+											<img src="{% static 'apps/vendors/images/photo3.jpg' %}" alt="" />
 											<h3>John Doe</h3>
 											<p>
 												Lorem ipsum dolor sit amet, consectetur adipisicing
@@ -226,7 +227,7 @@
 									</li>
 									<li>
 										<a href="#">
-											<img src="vendors/images/photo4.jpg" alt="" />
+											<img src="{% static 'apps/vendors/images/photo4.jpg' %}" alt="" />
 											<h3>Renee I. Hansen</h3>
 											<p>
 												Lorem ipsum dolor sit amet, consectetur adipisicing
@@ -236,7 +237,7 @@
 									</li>
 									<li>
 										<a href="#">
-											<img src="vendors/images/img.jpg" alt="" />
+											<img src="{% static 'apps/vendors/images/img.jpg' %}" alt="" />
 											<h3>Vicki M. Coleman</h3>
 											<p>
 												Lorem ipsum dolor sit amet, consectetur adipisicing
@@ -258,7 +259,7 @@
 							data-toggle="dropdown"
 						>
 							<span class="user-icon">
-								<img src="vendors/images/photo1.jpg" alt="" />
+								<img src="{% static 'apps/vendors/images/photo1.jpg' %}" alt="" />
 							</span>
 							<span class="user-name">Ross C. Lopez</span>
 						</a>
@@ -282,7 +283,7 @@
 				</div>
 				<div class="github-link">
 					<a href="https://github.com/dropways/deskapp" target="_blank"
-						><img src="vendors/images/github.svg" alt=""
+						><img src="{% static 'apps/vendors/images/github.svg' %}" alt=""
 					/></a>
 				</div>
 			</div>
@@ -461,9 +462,9 @@
 		<div class="left-side-bar">
 			<div class="brand-logo">
 				<a href="index.html">
-					<img src="vendors/images/deskapp-logo.svg" alt="" class="dark-logo" />
+					<img src="{% static 'apps/vendors/images/deskapp-logo.svg' %}" alt="" class="dark-logo" />
 					<img
-						src="vendors/images/deskapp-logo-white.svg"
+						src="{% static 'apps/vendors/images/deskapp-logo-white.svg' %}"
 						alt=""
 						class="light-logo"
 					/>
@@ -576,7 +577,7 @@
 							</a>
 							<ul class="submenu">
 								<li><a href="video-player.html">Video Player</a></li>
-								<li><a href="{% url 'login_view' %}">Login</a></li>
+								<li><a href="#">Login</a></li>
 								<li><a href="forgot-password.html">Forgot Password</a></li>
 								<li><a href="reset-password.html">Reset Password</a></li>
 							</ul>
@@ -684,7 +685,7 @@
 								<span class="micon bi bi-layout-text-window-reverse"></span>
 								<span class="mtext"
 									>Landing Page
-									<img src="vendors/images/coming-soon.png" alt="" width="25"
+									<img src="{% static 'apps/vendors/images/coming-soon.png' %}" alt="" width="25"
 								/></span>
 							</a>
 						</li>
@@ -722,11 +723,11 @@
 								<div class="col-md-8 col-sm-12">
 									<div class="blog-detail card-box overflow-hidden mb-30">
 										<div class="blog-img">
-											<img src="vendors/images/img2.jpg" alt="" />
+											<img src="{% static 'apps/vendors/images/img2.jpg' %}" alt="" />
 										</div>
 										<div class="blog-caption">
 											<h4 class="mb-10">
-												Lorem ipsum dolor sit amet, consectetur adipisicing elit
+                                                {{ blog.title }}
 											</h4>
 											<p>
 												Lorem ipsum dolor sit amet, consectetur adipisicing
@@ -1039,10 +1040,10 @@
 		</button>
 		<!-- welcome modal end -->
 		<!-- js -->
-		<script src="vendors/scripts/core.js"></script>
-		<script src="vendors/scripts/script.min.js"></script>
-		<script src="vendors/scripts/process.js"></script>
-		<script src="vendors/scripts/layout-settings.js"></script>
+		<script src="{% static 'apps/vendors/scripts/core.js' %}"></script>
+		<script src="{% static 'apps/vendors/scripts/script.min.js' %}"></script>
+		<script src="{% static 'apps/vendors/scripts/process.js' %}"></script>
+		<script src="{% static 'apps/vendors/scripts/layout-settings.js' %}"></script>
 		<!-- Google Tag Manager (noscript) -->
 		<noscript
 			><iframe
