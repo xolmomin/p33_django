@@ -1,7 +1,8 @@
 from django.contrib.auth.models import User
 from django.db.models import Model, CharField, FloatField, TextField, ForeignKey, CASCADE, ImageField, SlugField, \
-    DateTimeField
+    DateTimeField, BooleanField
 from django.utils.text import slugify
+from django_ckeditor_5.fields import CKEditor5Field
 
 
 class SlugBasedModel(Model):
@@ -46,12 +47,23 @@ class Comment(Model):
 class BlogCategory(Model):
     name = CharField(max_length=255)
 
+    @property
+    def blog_count(self):
+        return self.blogs.filter(archived=False).count()
+
+    def __str__(self):
+        return self.name
+
 
 class Blog(Model):
     title = CharField(max_length=255)
-    description = TextField()
+    description = CKEditor5Field()
     image = ImageField(upload_to='blogs/%Y/%m/%d')
-    category = ForeignKey('apps.BlogCategory', CASCADE)
+    category = ForeignKey('apps.BlogCategory', CASCADE, related_name='blogs')
+    archived = BooleanField(db_default=False)
     created_by = ForeignKey('auth.User', CASCADE, editable=False)
     updated_at = DateTimeField(auto_now_add=True)
     created_at = DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title

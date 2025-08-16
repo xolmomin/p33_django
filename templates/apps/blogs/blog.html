@@ -750,7 +750,8 @@
                                                                 ex ea commodo
                                                             </p>
                                                             <div class="pt-10">
-                                                                <a href="{% url 'blog_detail_view' blog.pk %}" class="btn btn-outline-primary">Read More</a>
+                                                                <a href="{% url 'blog_detail_view' blog.pk %}"
+                                                                   class="btn btn-outline-primary">Read More</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -764,17 +765,40 @@
                             <div class="blog-pagination">
                                 <div class="btn-toolbar justify-content-center mb-15">
                                     <div class="btn-group">
-                                        <a href="#" class="btn btn-outline-primary prev"
-                                        ><i class="fa fa-angle-double-left"></i
-                                        ></a>
-                                        <a href="#" class="btn btn-outline-primary">1</a>
-                                        <a href="#" class="btn btn-outline-primary">2</a>
-                                        <span class="btn btn-primary current">3</span>
-                                        <a href="#" class="btn btn-outline-primary">4</a>
-                                        <a href="#" class="btn btn-outline-primary">5</a>
-                                        <a href="#" class="btn btn-outline-primary next"
-                                        ><i class="fa fa-angle-double-right"></i
-                                        ></a>
+                                        {% if page_obj.has_previous %}
+                                            <a href="{% url 'blog_list_view' %}?page={{ page_obj.previous_page_number }}"
+                                               class="btn btn-outline-primary prev">
+                                                <i class="fa fa-angle-double-left"></i>
+                                            </a>
+                                        {% endif %}
+
+                                        {% if page_obj.previous_page_number > 1 %}
+                                            <a href="{% url 'blog_list_view' %}?page=1"
+                                               class="btn btn-outline-primary">1</a>
+                                            <a href="#" class="btn btn-outline-primary">...</a>
+                                        {% endif %}
+                                        {% if page_obj.has_previous %}
+                                            <a href="{% url 'blog_list_view' %}?page={{ page_obj.previous_page_number }}"
+                                               class="btn btn-outline-primary">{{ page_obj.previous_page_number }}</a>
+                                        {% endif %}
+                                        <span class="btn btn-primary current">{{ page_obj.number }}</span>
+                                        {% if page_obj.has_next %}
+                                            <a href="{% url 'blog_list_view' %}?page={{ page_obj.next_page_number }}"
+                                               class="btn btn-outline-primary">{{ page_obj.next_page_number }}</a>
+                                        {% endif %}
+
+                                        {% if page_obj.next_page_number < page_obj.paginator.num_pages %}
+                                            <a href="#" class="btn btn-outline-primary">...</a>
+                                            <a href="{% url 'blog_list_view' %}?page={{ page_obj.paginator.num_pages }}"
+                                               class="btn btn-outline-primary">{{ page_obj.paginator.num_pages }}</a>
+                                        {% endif %}
+
+                                        {% if page_obj.has_next %}
+                                            <a href="{% url 'blog_list_view' %}?page={{ page_obj.next_page_number }}"
+                                               class="btn btn-outline-primary next">
+                                                <i class="fa fa-angle-double-right"></i>
+                                            </a>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
@@ -783,91 +807,27 @@
                             <div class="card-box mb-30">
                                 <h5 class="pd-20 h5 mb-0">Categories</h5>
                                 <div class="list-group">
-                                    <a
-                                            href="#"
-                                            class="list-group-item d-flex align-items-center justify-content-between"
-                                    >HTML
-                                        <span class="badge badge-primary badge-pill">7</span></a
-                                    >
-                                    <a
-                                            href="#"
-                                            class="list-group-item d-flex align-items-center justify-content-between"
-                                    >Css
-                                        <span class="badge badge-primary badge-pill"
-                                        >10</span
-                                        ></a
-                                    >
-                                    <a
-                                            href="#"
-                                            class="list-group-item d-flex align-items-center justify-content-between active"
-                                    >Bootstrap
-                                        <span class="badge badge-primary badge-pill">8</span></a
-                                    >
-                                    <a
-                                            href="#"
-                                            class="list-group-item d-flex align-items-center justify-content-between"
-                                    >jQuery
-                                        <span class="badge badge-primary badge-pill"
-                                        >15</span
-                                        ></a
-                                    >
-                                    <a
-                                            href="#"
-                                            class="list-group-item d-flex align-items-center justify-content-between"
-                                    >Design
-                                        <span class="badge badge-primary badge-pill">5</span></a
-                                    >
+                                    {% for category in categories %}
+                                        <a href="{% url 'blog_list_view' %}?category={{ category.pk }}"
+                                           class="list-group-item d-flex align-items-center justify-content-between">
+                                            {{ category.name }}
+                                            <span class="badge badge-primary badge-pill">{{ category.blog_count }}</span>
+                                        </a>
+                                    {% endfor %}
                                 </div>
                             </div>
                             <div class="card-box mb-30">
                                 <h5 class="pd-20 h5 mb-0">Latest Post</h5>
                                 <div class="latest-post">
                                     <ul>
-                                        <li>
-                                            <h4>
-                                                <a href="#"
-                                                >Ut enim ad minim veniam, quis nostrud
-                                                    exercitation ullamco</a
-                                                >
-                                            </h4>
-                                            <span>HTML</span>
-                                        </li>
-                                        <li>
-                                            <h4>
-                                                <a href="#"
-                                                >Lorem ipsum dolor sit amet, consectetur
-                                                    adipisicing elit</a
-                                                >
-                                            </h4>
-                                            <span>Css</span>
-                                        </li>
-                                        <li>
-                                            <h4>
-                                                <a href="#"
-                                                >Ut enim ad minim veniam, quis nostrud
-                                                    exercitation ullamco</a
-                                                >
-                                            </h4>
-                                            <span>jQuery</span>
-                                        </li>
-                                        <li>
-                                            <h4>
-                                                <a href="#"
-                                                >Lorem ipsum dolor sit amet, consectetur
-                                                    adipisicing elit</a
-                                                >
-                                            </h4>
-                                            <span>Bootstrap</span>
-                                        </li>
-                                        <li>
-                                            <h4>
-                                                <a href="#"
-                                                >Lorem ipsum dolor sit amet, consectetur
-                                                    adipisicing elit</a
-                                                >
-                                            </h4>
-                                            <span>Design</span>
-                                        </li>
+                                        {% for latest_blog in latest_blogs %}
+                                            <li>
+                                                <h4>
+                                                    <a href="{% url 'blog_detail_view' latest_blog.pk %}">{{ latest_blog.title }}</a>
+                                                </h4>
+                                                <span>{{ latest_blog.category.name }}</span>
+                                            </li>
+                                        {% endfor %}
                                     </ul>
                                 </div>
                             </div>
