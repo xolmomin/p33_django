@@ -461,7 +461,7 @@
 
 <div class="left-side-bar">
     <div class="brand-logo">
-        <a href="index.html">
+        <a href="{% url 'product_list_view' %}">
             <img src="{% static 'apps/vendors/images/deskapp-logo.svg' %}" alt="" class="dark-logo"/>
             <img
                     src="{% static 'apps/vendors/images/deskapp-logo-white.svg' %}"
@@ -707,7 +707,7 @@
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="index.html">Home</a>
+                                    <a href="{% url 'product_list_view' %}">Home</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
                                     Blog

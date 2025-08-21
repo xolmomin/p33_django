@@ -1,6 +1,7 @@
-from django.views.generic import TemplateView, ListView, DetailView
+from django.db.models import Q, F, Count, Min, Max, Sum, Avg, Value
+from django.views.generic import ListView, DetailView, TemplateView
 
-from apps.models import Blog, Category, BlogCategory
+from apps.models import Blog, BlogCategory
 
 
 class BlogListView(ListView):
@@ -11,6 +12,7 @@ class BlogListView(ListView):
 
     def get_queryset(self):
         qs = super().get_queryset()
+
         category_id = self.request.GET.get('category')
 
         if category_id:
@@ -21,7 +23,7 @@ class BlogListView(ListView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
         context['categories'] = BlogCategory.objects.all()
-        context['latest_blogs'] = Blog.objects.order_by('-created_at')[:5]
+        context['latest_blogs'] = Blog.objects.select_related('category').all()[:5]
         return context
 
 
@@ -35,3 +37,19 @@ class BlogDetailView(DetailView):
         context['categories'] = BlogCategory.objects.all()
         context['latest_blogs'] = Blog.objects.order_by('-created_at')[:5]
         return context
+
+
+class LoginTemplateView(TemplateView):
+    template_name = 'apps/auth/login.html'
+
+
+class RegisterTemplateView(TemplateView):
+    template_name = 'apps/auth/register.html'
+
+
+class ProductListView(TemplateView):
+    template_name = 'apps/products/product.html'
+
+
+class ProductDetailView(TemplateView):
+    template_name = 'apps/products/product-detail.html'
