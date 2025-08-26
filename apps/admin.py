@@ -1,44 +1,21 @@
 from django.contrib import admin
 
-from apps.models import Blog, BlogCategory
+from apps.models import ProductImage, Product
 
 
-@admin.register(Blog)
-class BlogModelAdmin(admin.ModelAdmin):
-    list_display = 'id', 'title', 'archived'
-    search_fields = 'title',
-
-    actions = ['archived_to_unarchived_action']
-
-    @admin.action(description="Arxivga o'tkazish")
-    def archived_to_unarchived_action(self, request, queryset):
-        queryset.update(archived=True)
-
-    def save_model(self, request, obj, form, change):
-        obj.created_by = request.user
-        super().save_model(request, obj, form, change)
+class ProductStackedInline(admin.StackedInline):
+    model = ProductImage
+    extra = 0
+    min_num = 0
+    max_num = 8
 
 
-@admin.register(BlogCategory)
-class BlogCategoryModelAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'archived_blogs', 'un_archived_blogs']
+@admin.register(ProductImage)
+class ProductImageModelAdmin(admin.ModelAdmin):
+    pass
 
-    actions = ['archived_to_unarchived_action', 'unarchived_to_archived_action']
 
-    @admin.action(description="Arxivga o'tkazish")
-    def archived_to_unarchived_action(self, request, queryset):
-        for category in queryset:
-            category.blogs.update(archived=True)
-
-    @admin.action(description="Arxivdan chiqarish")
-    def unarchived_to_archived_action(self, request, queryset):
-        for category in queryset:
-            category.blogs.update(archived=False)
-
-    @admin.display(description='Arxivlanganlar soni')
-    def archived_blogs(self, obj: BlogCategory):
-        return obj.blogs.filter(archived=True).count()
-
-    @admin.display(description='Arxivlanmaganlar soni')
-    def un_archived_blogs(self, obj: BlogCategory):
-        return obj.blogs.filter(archived=False).count()
+@admin.register(Product)
+class ProductModelAdmin(admin.ModelAdmin):
+    list_display = 'id', 'name', 'image_count'
+    inlines = [ProductStackedInline]

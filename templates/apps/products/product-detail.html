@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-	Product Detail
+    Product Detail Page
 {% endblock %}
 
 {% block custom_css %}
@@ -25,7 +25,7 @@
                     <nav aria-label="breadcrumb" role="navigation">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="{% url 'product_list_view' %}">Home</a>
+                                <a href="index.html">Home</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
                                 Product Detail
@@ -40,65 +40,43 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-12 col-sm-12">
                         <div class="product-slider slider-arrow">
-                            <div class="product-slide">
-                                <img src="{% static 'apps/vendors/images/product-img1.jpg' %}" alt=""/>
-                            </div>
-                            <div class="product-slide">
-                                <img src="{% static 'apps/vendors/images/product-img2.jpg' %}" alt=""/>
-                            </div>
-                            <div class="product-slide">
-                                <img src="{% static 'apps/vendors/images/product-img3.jpg' %}" alt=""/>
-                            </div>
-                            <div class="product-slide">
-                                <img src="{% static 'apps/vendors/images/product-img4.jpg' %}" alt=""/>
-                            </div>
+                            {% for img in product.images.all %}
+                                <div class="product-slide">
+                                    <img src="{{ img.image.url }}" alt=""/>
+                                </div>
+                            {% empty %}
+                                <div class="product-slide">
+                                    <img src="{% static 'apps/vendors/images/noimage.jpeg' %}" alt=""/>
+                                </div>
+                            {% endfor %}
                         </div>
                         <div class="product-slider-nav">
-                            <div class="product-slide-nav">
-                                <img src="{% static 'apps/vendors/images/product-img1.jpg' %}" alt=""/>
-                            </div>
-                            <div class="product-slide-nav">
-                                <img src="{% static 'apps/vendors/images/product-img2.jpg' %}" alt=""/>
-                            </div>
-                            <div class="product-slide-nav">
-                                <img src="{% static 'apps/vendors/images/product-img3.jpg' %}" alt=""/>
-                            </div>
-                            <div class="product-slide-nav">
-                                <img src="{% static 'apps/vendors/images/product-img4.jpg' %}" alt=""/>
-                            </div>
+                            {% for img in product.images.all %}
+                                <div class="product-slide-nav">
+                                    <img src="{{ img.image.url }}" alt=""/>
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12 col-sm-12">
                         <div class="product-detail-desc pd-20 card-box height-100-p">
-                            <h4 class="mb-20 pt-20">Gufram Bounce Black</h4>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                sed do eiusmod tempor incididunt ut labore et dolore magna
-                                aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                Duis aute irure dolor in reprehenderit in voluptate velit
-                                esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                                sint occaecat cupidatat non proident, sunt in culpa qui
-                                officia deserunt mollit anim id est laborum.
-                            </p>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                sed do eiusmod tempor incididunt ut labore et dolore magna
-                                aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            </p>
+                            <h4 class="mb-20 pt-20">{{ product.name }}</h4>
+                            {{ product.description }}
                             <div class="price">
-                                <del>$55.5</del>
-                                <ins>$49.5</ins>
+                                {% if product.discount_price %}
+                                    <del>${{ product.price }}</del>
+                                    <ins>${{ product.discount_price }}</ins>
+                                {% else %}
+                                    <ins>${{ product.price }}</ins>
+                                {% endif %}
                             </div>
                             <div class="mx-w-150">
                                 <div class="form-group">
                                     <label class="text-blue">quantity</label>
-                                    <input
-                                            id="demo3_22"
-                                            type="text"
-                                            value="1"
-                                            name="demo3_22"
+                                    <input id="demo3_22"
+                                           type="text"
+                                           value="1"
+                                           name="demo3_22"
                                     />
                                 </div>
                             </div>
@@ -121,54 +99,32 @@
             <h4 class="mb-20">Recent Product</h4>
             <div class="product-list">
                 <ul class="row">
-                    <li class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="product-box">
-                            <div class="producct-img">
-                                <img src="{% static 'apps/vendors/images/product-img1.jpg' %}" alt=""/>
-                            </div>
-                            <div class="product-caption">
-                                <h4><a href="#">Gufram Bounce Black</a></h4>
-                                <div class="price">
-                                    <del>$55.5</del>
-                                    <ins>$49.5</ins>
+                    {% for latest_product in latest_products %}
+                        <li class="col-lg-4 col-md-6 col-sm-12">
+                            <div class="product-box">
+                                <div class="producct-img">
+                                    {% if latest_product.first_image %}
+                                        <img src="{{ latest_product.first_image }}" alt=""/>
+                                    {% else %}
+                                        <img src="{% static 'apps/vendors/images/noimage.jpeg' %}" alt=""/>
+                                    {% endif %}
                                 </div>
-                                <a href="#" class="btn btn-outline-primary">Read More</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="product-box">
-                            <div class="producct-img">
-                                <img src="{% static 'apps/vendors/images/product-img2.jpg' %}" alt=""/>
-                            </div>
-                            <div class="product-caption">
-                                <h4><a href="#">Gufram Bounce White</a></h4>
-                                <div class="price">
-                                    <del>$75.5</del>
-                                    <ins>$50</ins>
+                                <div class="product-caption">
+                                    <h4><a href="#">{{ latest_product.name }}</a></h4>
+                                    <div class="price">
+                                        {% if latest_product.discount_price %}
+                                            <del>${{ latest_product.price }}</del>
+                                            <ins>${{ latest_product.discount_price }}</ins>
+                                        {% else %}
+                                            <ins>${{ latest_product.price }}</ins>
+                                        {% endif %}
+                                    </div>
+                                    <a href="{% url 'product_detail_view' latest_product.id %}"
+                                       class="btn btn-outline-primary">Read More</a>
                                 </div>
-                                <a href="#" class="btn btn-outline-primary"
-                                >Add To Cart</a
-                                >
                             </div>
-                        </div>
-                    </li>
-                    <li class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="product-box">
-                            <div class="producct-img">
-                                <img src="{% static 'apps/vendors/images/product-img3.jpg' %}" alt=""/>
-                            </div>
-                            <div class="product-caption">
-                                <h4><a href="#">Contrast Lace-Up Sneakers</a></h4>
-                                <div class="price">
-                                    <ins>$80</ins>
-                                </div>
-                                <a href="#" class="btn btn-outline-primary"
-                                >Add To Cart</a
-                                >
-                            </div>
-                        </div>
-                    </li>
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>

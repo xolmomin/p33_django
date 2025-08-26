@@ -1,26 +1,32 @@
-from django.db.models import Model, CharField, FloatField, TextField, ForeignKey, CASCADE, ImageField
+from django.db.models import CharField, FloatField, TextField, ImageField, ForeignKey, CASCADE
 
-from apps.models.base import SlugBasedModel
-
-
-class Category(SlugBasedModel):
-    name = CharField(max_length=255)
-    image = ImageField(upload_to='category/%Y/%m/%d')
+from apps.models.base import UUIDBaseModel, CreatedBaseModel
 
 
-class Product(SlugBasedModel):
+class Product(UUIDBaseModel, CreatedBaseModel):
     name = CharField(max_length=255)
     price = FloatField()
+    discount_price = FloatField(blank=True, null=True)
     description = TextField()
-    category = ForeignKey('apps.Category', CASCADE)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return self.name
+
+    @property
+    def image_count(self):
+        return self.images.count()
+
+    @property
+    def first_image(self):
+        image = self.images.first()
+        if image:
+            return image.image.url
+        return None
 
 
-class ProductImage(Model):
-    product = ForeignKey('apps.Product', CASCADE)
-    image = ImageField(upload_to='product/%Y/%m/%d')
-
-
-class Comment(Model):
-    product = ForeignKey('apps.Product', CASCADE)
-    user = ForeignKey('auth.User', CASCADE)
-    comment = CharField(max_length=255)
+class ProductImage(UUIDBaseModel):
+    product = ForeignKey('apps.Product', CASCADE, related_name='images')
+    image = ImageField(upload_to='images/%Y/%m/%d')

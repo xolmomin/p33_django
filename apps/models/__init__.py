@@ -1,2 +1,2 @@
-from apps.models.blogs import Blog, BlogCategory
-from apps.models.products import Product, ProductImage, Category, Comment
+from apps.models.products import ProductImage, Product
+from apps.models.users import User
