@@ -1,0 +1,115 @@
+dev - development
+prod- production
+
+
+
+python3 manage.py startapp apps
+
+python3 manage.py makemigrations
+python3 manage.py migrate
+
+python3 manage.py createsuperuser
+
+
+https://books.agiliq.com/projects/django-admin-cookbook/en/latest/logo.html
+
+
+
+https://docs.djangoproject.com/en/5.2/ref/models/fields/#field-types
+
+field-types
+orm (https://books.agiliq.com/projects/django-orm-cookbook/en/latest/)
+
+
+
+todo
+adminkaga modellarni chiqarish
+productlar listini chiqarish
+product detail ga otadigan qilish
+product detailda malumotlarini chiqarish
+
+
+
+productni garantiyasi bor
+
+
+
+#homework
+adminkaga modellarni chiqarish
+productlar listini chiqarish
+product detail ga otadigan qilish
+product detailda malumotlarini chiqarish
+
+
+https://books.agiliq.com/projects/django-admin-cookbook/en/latest/
+Calculated fields
+
+https://books.agiliq.com/projects/django-orm-cookbook/en/latest/
+Querying and Filtering
+
+
+django commands
+python3 manage.py startapp apps # app yaratish uchun
+python3 manage.py makemigrations # migratsiya fayllarini yaratish
+python3 manage.py migrate # migratsiya fayllarni database ga yozish
+python3 manage.py runserver # projectni run qilish
+python3 manage.py createsuperuser # admin userni yaratish
+python3 manage.py changepassword # userni parolini almashtirish
+
+linux commands
+ls
+pwd
+mv
+rm
+rm -rf
+mkdir
+touch
+cat
+echo
+nano
+whoami
+su postgres
+# root
+$ any user
+sudo su
+
+docker commands
+docker run --name postgres_container -e POSTGRES_PASSWORD=1 -p 5432:5432 -d postgres:alpine
+docker run --name redis_container -p 6379:6379 -d redis:alpine
+
+docker exec -it container_id yoki container_name (sh, bash, python, redis, psql)
+
+docker exec -itu postgres container_id yoki container_name (sh, bash, python, redis, psql)
+docker exec -itu postgres my_postgres psql
+docker exec -itu postgres my_postgres psql -c "drop database valijon_db"
+
+
+docker rm container_id yoki container_name
+docker start container_id yoki container_name
+docker stop container_id yoki container_name
+docker ps
+docker rm container_id yoki container_name
+docker rm -f container_id yoki container_name
+docker ps -a
+docker image ls
+docker container ls
+docker network ls
+docker volume ls
+
+
+uv add requests
+uv remove requests
+
+
+
+
+
+
+
+
+https://books.agiliq.com/projects/django-orm-cookbook/en/latest/uuid.html
+
+
+
+task
+1. image resize, mb, ext.
