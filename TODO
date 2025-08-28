@@ -117,6 +117,20 @@ task
 
 
 2. django registration
-2. django send email
-3. celery
+
+login
+django commands
+python3 manage.py makemigrations
+python3 manage.py migrate
+python3 manage.py createsuper
+
+django send email
+celery
+
+https://mailtrap.io/blog/django-send-email/
+https://sendlayer.com/blog/how-to-send-email-with-django/
+
+https://simpleisbetterthancomplex.com/tutorial/2016/08/24/how-to-create-one-time-link.html
+
+
 
