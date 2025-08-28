@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
 
 from apps.models import Product
 
@@ -18,3 +18,11 @@ class ProductDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['latest_products'] = Product.objects.all()[:3]
         return context
+
+
+class RegisterTemplateView(TemplateView):
+    template_name = 'apps/auth/register.html'
+
+
+class LoginTemplateView(TemplateView):
+    template_name = 'apps/auth/login.html'

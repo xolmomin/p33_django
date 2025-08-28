@@ -241,41 +241,39 @@
                 </div>
             </div>
         </div>
-        <div class="user-info-dropdown">
-            <div class="dropdown">
-                <a
-                        class="dropdown-toggle"
-                        href="#"
-                        role="button"
-                        data-toggle="dropdown"
-                >
+        {% if user.is_authenticated %}
+            <div class="user-info-dropdown">
+                <div class="dropdown">
+                    <a class="dropdown-toggle"
+                       href="#"
+                       role="button"
+                       data-toggle="dropdown">
 							<span class="user-icon">
 								<img src="{% static 'apps/vendors/images/photo1.jpg' %}" alt=""/>
 							</span>
-                    <span class="user-name">Ross C. Lopez</span>
-                </a>
-                <div
-                        class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
-                >
-                    <a class="dropdown-item" href="profile.html"
-                    ><i class="dw dw-user1"></i> Profile</a
-                    >
-                    <a class="dropdown-item" href="profile.html"
-                    ><i class="dw dw-settings2"></i> Setting</a
-                    >
-                    <a class="dropdown-item" href="faq.html"
-                    ><i class="dw dw-help"></i> Help</a
-                    >
-                    <a class="dropdown-item" href="login.html"
-                    ><i class="dw dw-logout"></i> Log Out</a
-                    >
+                        <span class="user-name">{{ user.full_name }}</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                        <a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
+                        <a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Setting</a>
+                        <a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a>
+                        <a class="dropdown-item" href="login.html"><i class="dw dw-logout"></i> Log Out</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        {% else %}
+            <div class="user-notification login-menu">
+                <ul>
+                    <li>
+                        <a href="{% url 'login_view' %}" class="user-name">Login</a>
+                    </li>
+                </ul>
+            </div>
+        {% endif %}
         <div class="github-link">
-            <a href="https://github.com/dropways/deskapp" target="_blank"
-            ><img src="{% static 'apps/vendors/images/github.svg' %}" alt=""
-            /></a>
+            <a href="https://github.com/dropways/deskapp" target="_blank">
+                <img src="{% static 'apps/vendors/images/github.svg' %}" alt=""/>
+            </a>
         </div>
     </div>
 </div>
@@ -452,13 +450,10 @@
 
 <div class="left-side-bar">
     <div class="brand-logo">
-        <a href="index.html">
+        <a href="{% url 'product_list_view' %}">
             <img src="{% static 'apps/vendors/images/deskapp-logo.svg' %}" alt="" class="dark-logo"/>
-            <img
-                    src="{% static 'apps/vendors/images/deskapp-logo-white.svg' %}"
-                    alt=""
-                    class="light-logo"
-            />
+            <img src="{% static 'apps/vendors/images/deskapp-logo-white.svg' %}"
+                 alt="" class="light-logo"/>
         </a>
         <div class="close-sidebar" data-toggle="left-sidebar-close">
             <i class="ion-close-round"></i>

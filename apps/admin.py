@@ -1,6 +1,7 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 
-from apps.models import ProductImage, Product
+from apps.models import ProductImage, Product, User
 
 
 class ProductStackedInline(admin.StackedInline):
@@ -19,3 +20,8 @@ class ProductImageModelAdmin(admin.ModelAdmin):
 class ProductModelAdmin(admin.ModelAdmin):
     list_display = 'id', 'name', 'image_count'
     inlines = [ProductStackedInline]
+
+
+@admin.register(User)
+class UserModelAdmin(UserAdmin):
+    pass
