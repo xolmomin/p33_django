@@ -1,4 +1,8 @@
+from django.contrib.auth import logout
+from django.contrib.auth.views import LoginView, LogoutView
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
+from django.views import View
 from django.views.generic import ListView, DetailView, TemplateView, CreateView
 
 from apps.forms import CustomUserCreationForm
@@ -27,13 +31,19 @@ class RegisterCreateView(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('product_list_view')
 
-    def form_invalid(self, form):
-        return super().form_invalid(form)
-
     def form_valid(self, form):
         # send_email()
         return super().form_valid(form)
 
 
-class LoginTemplateView(TemplateView):
+class LoginTemplateView(LoginView):
     template_name = 'apps/auth/login.html'
+    next_page = reverse_lazy('product_list_view')
+
+
+class LogoutPageView(View):
+    success_url = reverse_lazy('product_list_view')
+
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        return redirect(self.success_url)
