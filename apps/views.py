@@ -7,6 +7,7 @@ from django.views.generic import ListView, DetailView, TemplateView, CreateView
 
 from apps.forms import CustomUserCreationForm
 from apps.models import Product
+from apps.utils import send_email
 
 
 class ProductListView(ListView):
@@ -32,8 +33,9 @@ class RegisterCreateView(CreateView):
     success_url = reverse_lazy('product_list_view')
 
     def form_valid(self, form):
-        # send_email()
-        return super().form_valid(form)
+        _form = super().form_valid(form)
+        send_email(form.instance.email)
+        return _form
 
 
 class LoginTemplateView(LoginView):

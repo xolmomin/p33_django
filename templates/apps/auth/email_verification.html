@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Please verify your email</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body style="margin:0; padding:0; background-color:#f4f4f4; font-family:Arial, Helvetica, sans-serif;">
+
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td align="center" style="padding:40px 16px;">
+
+            <!-- Card container -->
+            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"
+                   style="max-width:480px; background-color:#ffffff; border-radius:12px;">
+
+                <!-- Top section -->
+                <tr>
+                    <td align="center" style="padding:32px 24px 16px;">
+                        <!-- Logo/Icon -->
+                        <img src="https://via.placeholder.com/64" alt="Logo" width="64" height="64"
+                             style="display:block; margin-bottom:24px;">
+
+                        <!-- Heading -->
+                        <h1 style="margin:0 0 12px; font-size:22px; font-weight:bold; color:#111111;">
+                            Please verify your email 😀
+                        </h1>
+
+                        <!-- Supporting text -->
+                        <p style="margin:0 0 24px; font-size:15px; line-height:22px; color:#444444;">
+                            To use <strong>{{ app_name }}</strong>, click the verification button. This helps keep your
+                            account secure.
+                        </p>
+
+                        <!-- Button -->
+                        <table role="presentation" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td align="center" bgcolor="#1a73e8" style="border-radius:6px;">
+                                    <a href="{{ verification_url }}" target="_blank"
+                                       style="display:inline-block; padding:12px 24px; font-size:16px; font-weight:bold; color:#ffffff; text-decoration:none; border-radius:6px; background-color:#1a73e8;">
+                                        Verify my account
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
+                </tr>
+
+                <!-- Middle note -->
+                <tr>
+                    <td align="center" style="padding:24px 24px 8px;">
+                        <p style="margin:0; font-size:13px; line-height:20px; color:#555555;">
+                            You're receiving this email because you have an account in <strong>{{ app_name }}</strong>.
+                            If you're not sure why you received this, please contact us by replying to this email.
+                        </p>
+                    </td>
+                </tr>
+
+                <!-- Gray footer note -->
+                <tr>
+                    <td align="center" style="padding:20px;">
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"
+                               style="background-color:#f9f9f9; border-radius:8px;">
+                            <tr>
+                                <td style="padding:16px;">
+                                    <p style="margin:0; font-size:12px; line-height:18px; color:#777777;">
+                                        Email specialists use {{ app_name }}'s intuitive tool to design emails for
+                                        desktop and mobile, and let our smart algorithm generate HTML for use in their
+                                        ESPs.
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+            </table>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
