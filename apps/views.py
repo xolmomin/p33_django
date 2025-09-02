@@ -1,4 +1,5 @@
 from django.contrib.auth import logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
@@ -6,8 +7,8 @@ from django.views import View
 from django.views.generic import ListView, DetailView, TemplateView, CreateView
 
 from apps.forms import CustomUserCreationForm
-from apps.models import Product
-from apps.utils import send_email
+from apps.models import Product, User
+from apps.tasks import send_email
 
 
 class ProductListView(ListView):
@@ -34,7 +35,8 @@ class RegisterCreateView(CreateView):
 
     def form_valid(self, form):
         _form = super().form_valid(form)
-        send_email(form.instance.email)
+        # send_email(form.instance.email)  # 2-3sekund
+        send_email.delay(form.instance.email)  # 0sekund
         return _form
 
 
@@ -49,3 +51,7 @@ class LogoutPageView(View):
     def get(self, request, *args, **kwargs):
         logout(request)
         return redirect(self.success_url)
+
+
+class UserProfileTemplateView(LoginRequiredMixin, TemplateView):
+    template_name = 'apps/auth/profile.html'

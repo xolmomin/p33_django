@@ -3,7 +3,7 @@ from django.db.models import CharField
 
 
 class User(AbstractUser):
-    phone = CharField(max_length=11, null=True, unique=True)
+    phone = CharField(max_length=12, null=True, unique=True)
 
     @property
     def full_name(self):

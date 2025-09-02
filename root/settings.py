@@ -32,6 +32,8 @@ INSTALLED_APPS = [
 
     # Third party apps
     'django_ckeditor_5',
+    'django_celery_results',
+    'django_celery_beat',
 
 ]
 
@@ -244,3 +246,8 @@ EMAIL_PORT=587
 EMAIL_HOST_USER='sarvarbekjetbrains@gmail.com'
 EMAIL_HOST_PASSWORD='vagc xter qcuk nvuw'
 EMAIL_USE_TLS=True
+
+LOGIN_URL = '/login'
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'django-db'
